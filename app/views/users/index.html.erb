@@ -1,0 +1,20 @@
+<h1>一覧</h1>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>内容</th>
+    <th>pass</th>
+  </tr>
+  <span><%= notice %></span>
+<% @accounts.each do |account| %>
+  <tr>
+    <td><%= account.name %></td>
+    <td><%= account.email %></td>
+    <td><%= account.password %></td>
+    <td><%= link_to 'アカウント詳細を確認する', user_path(account.id) %></td>
+    <td><%= link_to "アカウントを編集する", edit_user_path(account.id) %></td>
+    <td><%= link_to 'アカウント削除', user_path(account.id),method: :delete,
+    data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %></td>
+  </tr>
+<% end %>
+</table>

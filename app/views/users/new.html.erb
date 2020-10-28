@@ -1,0 +1,32 @@
+<div class="fuield">
+  <div class="account_form">
+    <h1>kamigram</h1>
+    <p>登録して友達の写真や動画をチェックしよう</p>
+    <p>Facebookでログイン</p>
+    <p>または</p>
+    <span><%= notice %></span>
+    <% if @account.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@account.errors.count, "件のエラーがあります") %></h2>
+        <ul>
+        <% @account.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= form_with(model: @account, local: true) do |form| %>
+    <%= form.text_field :name , placeholder:"名前を入力" %><br>
+    <%= form.text_field :email, placeholder:"メールアドレスを入力" %><br>
+    <%= form.text_field :password, placeholder:"パスワードを入力" %><br>
+    <%= form.text_field :password_confirmation, placeholder:"もう一度パスワードを入力" %><br>
+    <%= image_tag(@account.image.url) if @account.image && @account.image.url %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+    <%= form.submit "登録する" %>
+    <% end %>
+  </div>
+  <div class="to_login">
+    <p>アカウントをお持ちですか？&nbsp<%= link_to "ログイン", new_session_path, class: 'btn btn-info' %></p>
+  </div>
+</div>

@@ -32,3 +32,8 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt', '3.1.11'
+gem 'pry-rails'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'carrierwave'
+gem 'mini_magick'

@@ -1,0 +1,8 @@
+<div class="fuield">
+  <span><%= notice %></span>
+  <h1><%= @account.name %>のページ</h1>
+  <p>メールアドレス：<%= @account.email %></p>
+  <p>Image:</p>
+  <%= image_tag @account.image.url %>
+    <%= link_to "ログイン", new_session_path %>
+</div>
