@@ -1,0 +1,16 @@
+.app_logo{
+  font-family: Great Vibes;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+}
+
+.app_logo:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+.main {
+  margin-top: 10rem;
+}

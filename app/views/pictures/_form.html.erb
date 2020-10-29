@@ -1,37 +1,45 @@
-<%= form_with(model: picture, local: true) do |form| %>
-  <% if picture.errors.any? %>
+<%= form_with(model: @picture, local: true,url: choose_new_or_edit) do |form| %>
+<% if flash[:error].present? %>
+    <ul class="errors">
+      <% flash[:error].each do |e| %>
+        <li><%= e %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if @picture.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
-
+      <h2><%= @picture.errors.count %>件のエラーがあります。</h2>
       <ul>
-      <% picture.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% @picture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
+  <div class="picture_title">
+    <%= form.label :title %><br>
     <%= form.text_field :title %>
   </div>
-
-  <div class="field">
-    <%= form.label :content %>
+  <div class="picture_title">
+    <%= form.label :content %><br>
     <%= form.text_area :content %>
   </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_area :image %>
+  <div class="field confirm_img">
+    <%= form.label :image %><br>
+    <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+    <span><%= form.file_field :image %></span>
+    <%= form.hidden_field :image_cache %>
   </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <br>
+  <%= form.submit %>
 <% end %>
+<br>
+<%= form_with(model: @picture, url: pictures_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :image %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.submit "戻る", name: "back" %>
+<% end %>
+<br>
+<%= link_to "ブログ一覧画面にもどる", pictures_path %>

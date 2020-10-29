@@ -4,12 +4,64 @@
     <title>Kamigram</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="app_logo" href="#">kamigram</a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+              <li class="justify-content-center">
+                <%= image_tag 'search.svg', width:'20px', height:'20px', alt: '検索' %>
+                <%= form_tag('/pictures', method: 'get') do %>
+                <%= label_tag(:title_key, 'Search title:') %>
+                <%= text_field_tag(:title_key) %>
+                <%= submit_tag('Search') %> <%= link_to 'Clear', pictures_path %>
+                <% end %>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="#">
+                <%= image_tag 'home.svg', width:'30px', height:'30px', alt: 'home' %>
+                <span class="sr-only">(current)</span></a>
+              </li>
+              <li><a href="#" class="icon">
+                紙ヒコーキ</a>
+              </li>
+              <li><a href="#" class="icon">
+                コンパス</a>
+              </li>
+              <li><a href="#" class="icon">
+                ハート</a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">アカウント<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <% if logged_in? %>
+                  <li><%= link_to "Profile", user_path(current_user.id) %></li>
+                  <li role="separator" class="divider"></li>
+                  <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+                  <% else %>
+                  <li><%= link_to "Sign up", new_user_path %></li>
+                  <li role="separator" class="divider"></li>
+                  <li><%= link_to "Login", new_session_path %></li>
+                  <% end %>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="main container_fuield">
+      <%= yield %>
+    </div>
   </body>
 </html>

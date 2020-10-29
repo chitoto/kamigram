@@ -1,19 +1,19 @@
 <div class="fuield">
   <h3>以下の内容で、送信する。</h3>
-  <%= form_with(model: @account, local: true) do |form| %>
+  <%= form_with(model: @user, local: true) do |form| %>
     <%= form.hidden_field :name %>
     <%= form.hidden_field :email %>
     <%= form.hidden_field :password %>
-    <p>name:<%= @account.name %></p>
-    <p>email:<%= @account.email %></p>
-    <p>email:<%= @account.password %></p>
-    <p><%= image_tag(@account.image.url) if @account.image && @account.image.url %></p>
+    <p>name:<%= @user.name %></p>
+    <p>email:<%= @user.email %></p>
+    <p>email:<%= @user.password %></p>
+    <p><%= image_tag(@user.image.url) if @user.image && @user.image.url %></p>
     <%= form.hidden_field :image_cache %>
     <br>
     <%= form.submit "登録する" %>
   <% end %>
   <br><br>
-  <%= form_with(model: @account, url: new_user_path, local:true, method:"get") do |form| %>
+  <%= form_with(model: @user, url: new_user_path, local:true, method:"get") do |form| %>
     <%= form.hidden_field :name %>
     <%= form.hidden_field :email %>
     <%= form.hidden_field :image_cache %>
