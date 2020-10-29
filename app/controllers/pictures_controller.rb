@@ -1,6 +1,7 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user
+  
   def index
     if params[:title_key]
       @pictures = Picture.where('title LIKE ?', "%#{params[:title_key]}%")
