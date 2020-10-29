@@ -1,24 +1,11 @@
-<p id="notice"><%= notice %></p>
+div class="fuield">
+  <h1>詳細画面</h1>
+  <p>タイトル: <%= @picture.title %></p>
+  <p>内容: <%= @picture.content %></p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @picture.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @picture.content %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @picture.image %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @picture.user %>
-</p>
-
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+  <p class="picture_img">Image:<br>
+    <%= image_tag @picture.image.url if @picture.image && @picture.image.url %>
+  </p>
+  <%= link_to "一覧画面にもどる", pictures_path, class: 'btn btn-secondary' %>
+</div>

@@ -1,33 +1,39 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Pictures</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Image</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="main row">
+  <div class="col-xs-0 col-sm-1 col-md-2 col-lg-3 side_category hidden-xs hidden-sm">
+    <ul>
+      <li>プロフィール</li>
+    </ul>
+  </div>
+  <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 main_contents">
+    <h1>一覧</h1><span class="notice"><%= notice %></span>
+    <%= link_to '新しく投稿する', new_picture_path, class: 'btn btn-primary' %>
     <% @pictures.each do |picture| %>
-      <tr>
-        <td><%= picture.title %></td>
-        <td><%= picture.content %></td>
-        <td><%= picture.image %></td>
-        <td><%= picture.user %></td>
-        <td><%= link_to 'Show', picture_path(picture.id) %></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture.id), data: { confirm: '本当に編集していいですか？' } %></td>
-        <td><%= link_to 'Destroy', picture_path(picture.id), method: :delete, data: { confirm: '削除してよろしいですか?' } %></td>
-      </tr>
+      <table>
+        <tr>
+          <th>投稿者：<%= picture.user.name %></th>
+          <td>
+            <%= link_to '詳細', picture_path(picture.id), class: 'btn btn-info' %>
+            <% if picture.user_id == current_user.id %>
+              <%= link_to "編集", edit_picture_path(picture.id),
+              data: { confirm: '本当に編集していいですか？' }, class: 'btn btn-warning' %>
+              <%= link_to '削除', picture_path(picture.id),method: :delete,
+              data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">タイトル：<%= picture.title %></td>
+        </tr>
+        <tr>
+          <td colspan="2">内容：<br><%= picture.content %></td>
+        </tr>
+        <tr>
+          <td class="picture_img" colspan="2" rowspan="2">Image<br><img src="<%= picture.image %>"</td>
+        </tr>
+      </table>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Picture', new_picture_path %>
+  </div>
+  <div class="col-xs-0 col-sm-1 col-md-2 col-lg-3 aside">
+    
+  </div>
+</div>
