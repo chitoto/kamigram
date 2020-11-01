@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     if params[:title_key]
       @pictures = Picture.where('title LIKE ?', "%#{params[:title_key]}%")
@@ -27,6 +27,7 @@ class PicturesController < ApplicationController
       render :new
     else
       if @picture.save
+        PicturesMailer.picture_mail(@picture).deliver
         redirect_to pictures_path, notice: "作成しました！"
       else
         flash.now[:notice] = '作成に失敗しました'
