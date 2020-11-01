@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "users#index"
   resources :pictures do
     collection do
       post :confirm
@@ -8,11 +9,11 @@ Rails.application.routes.draw do
      patch :confirm  # confirm_pictures_pathの生成に必要
     end
   end
-  root to: "users#index"
   resources :users do
     collection do
       post :confirm
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
+  resources :favorites, only: [:index, :create, :destroy]
 end
