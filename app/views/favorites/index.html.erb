@@ -1,26 +1,20 @@
-<div class="row">
-  <div class="main_contents">
-    <h1>お気に入り一覧</h1><span class="notice"><%= notice %></span>
-    <% @favorite.each do |favorite| %>
-      <table>
-        <tr>
-          <th>投稿者：<%= favorite.user.name %></th>
-          <td>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">タイトル：<%= favorite.title %></td>
-        </tr>
-        <tr>
-          <td colspan="2">内容：<br><%= favorite.content %></td>
-        </tr>
-        <tr>
-          <td class="favorite_img" colspan="2" rowspan="2">Image<br><img src="<%= favorite.image %>"</td>
-        </tr>
-      </table>
-    <% end %>
-  </div>
-  <div class="aside">
-
-  </div>
+<div class="favorite_fuield">
+  <h1>お気に入り一覧</h1><span class="notice"><%= notice %></span>
+  <% @favorite.each do |favorite| %>
+    <table>
+      <tr>
+        <th>投稿者：<%= favorite.user.name %></th>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="2">タイトル：<%= favorite.title %></td>
+      </tr>
+      <tr>
+        <td colspan="2">内容：<br><%= favorite.content %></td>
+      </tr>
+      <tr>
+        <td class="picture_img" colspan="2" rowspan="2">Image<br><img src="<%= favorite.image %>"</td>
+      </tr>
+    </table>
+  <% end %>
 </div>

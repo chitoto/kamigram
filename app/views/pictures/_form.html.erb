@@ -16,15 +16,15 @@
       </ul>
     </div>
   <% end %>
-  <div class="picture_title">
+  <div class="form-group">
     <%= form.label :title %><br>
     <%= form.text_field :title %>
   </div>
-  <div class="picture_title">
+  <div class="form-group">
     <%= form.label :content %><br>
     <%= form.text_area :content %>
   </div>
-  <div class="field confirm_img">
+  <div class="form-group picture_img">
     <%= form.label :image %><br>
     <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
     <span><%= form.file_field :image %></span>

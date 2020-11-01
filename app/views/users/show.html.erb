@@ -3,14 +3,16 @@
   <h1><%= @user.name %>のページ</h1>
   <p>メールアドレス：<%= @user.email %></p>
   <p>Image:</p>
-  <%= image_tag @user.image.url %>
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "アカウントを編集する", edit_user_path(@user.id),
+  <span class="picture_img"><%= image_tag(@user.image.url) if @user.image && @user.image.url %></span>
+  <% if logged_in? %>
+    <% if @user.id == current_user.id %>
+      <p><%= link_to "アカウントを編集する", edit_user_path(@user.id),
   data: { confirm: '本当に編集していいですか？' }, class: 'btn btn-warning' %></p>
-    <p><%= link_to 'アカウント削除', user_path(@user.id),method: :delete,
+      <p><%= link_to 'アカウント削除', user_path(@user.id),method: :delete,
   data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %></p>
-    <%= link_to "お気に入り一覧画面", favorites_path %>
-    <%= link_to "picture一覧画面", pictures_path %>
+      <%= link_to "お気に入り一覧画面", favorites_path %>
+      <%= link_to "picture一覧画面", pictures_path %>
+      <% end %>
   <% else %>
     <%= link_to "ログイン", new_session_path %>
   <% end %>

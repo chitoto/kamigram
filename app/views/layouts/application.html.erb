@@ -14,37 +14,39 @@
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="app_logo" href="#">kamigram</a>
+            <a class="app_logo" href="/pictures">kamigram</a>
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-left">
-              <li class="justify-content-center">
-                <%= image_tag 'search.svg', width:'20px', height:'20px', alt: '検索' %>
+              <li><%= image_tag 'search.svg', width:'20px', height:'20px', alt: '検索' %></li>
+              <li>
                 <%= form_tag('/pictures', method: 'get') do %>
-                <%= label_tag(:title_key, 'Search title:') %>
                 <%= text_field_tag(:title_key) %>
                 <%= submit_tag('Search') %> <%= link_to 'Clear', pictures_path %>
                 <% end %>
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="#">
-                <%= image_tag 'home.svg', width:'30px', height:'30px', alt: 'home' %>
-                <%= link_to "picture一覧画面", pictures_path %>
-                <span class="sr-only">(current)</span></a>
+              <li class="active">
+                <%= link_to("/pictures") do %>
+                  <%= image_tag 'home.svg', width:'30px', height:'30px', alt: 'home' %>
+                <% end %>
+                <span class="sr-only">(current)</span>
               </li>
-              <li><a href="#" class="icon">
-                紙ヒコーキ</a>
+              <li><%= link_to("#") do %>
+                <%= image_tag 'envelope.svg', width:'30px', height:'30px', alt: 'message' %>
+              <% end %>
               </li>
-              <li><a href="#" class="icon">
-                コンパス</a>
+              <li><%= link_to("#") do %>
+                <%= image_tag 'compass.svg', width:'30px', height:'30px', alt: 'compass' %>
+              <% end %>
               </li>
-              <li><a href="#" class="icon">
-                <%= link_to "ハート", favorites_path %>
-                </a>
+              <li><%= link_to("/favorites") do %>
+                <%= image_tag 'heart.svg', width:'30px', height:'30px', alt: 'favorite' %>
+              <% end %>
               </li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">アカウント<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag 'person-circle.svg', width:'30px', height:'30px', alt: 'account' %><span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <% if logged_in? %>
                   <li><%= link_to "Profile", user_path(current_user.id) %></li>

@@ -1,3 +1,11 @@
+body{
+  background-color: #F0F2F5;
+}
+
+.navbar{
+  background-color: #fff;
+}
+
 .app_logo{
   font-family: Great Vibes;
   font-size: 4rem;
@@ -11,6 +19,84 @@
   text-decoration: none;
 }
 
+.navbar-left{
+  padding: : auto;
+  text-align: center;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+
 .main {
-  margin-top: 20rem;
+  margin-top: 10rem;
+}
+
+.main_contents{
+  width:500px;
+  border:1px solid red;
+}
+
+.row{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.side_category{
+  width: 300px;
+  text-align: left;
+  z-index: -1;
+}
+
+.side_category ul{
+  list-style: none;
+}
+
+table{
+  min-width: 400px;
+  height: 100%;
+  table-layout: fixed;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-right: 1rem;
+  margin-left: auto;
+  background-color: #fff;
+  text-align: left;
+}
+
+th,td{
+  overflow-wrap : break-word;
+  padding: 10px;
+  width:50%;
+}
+
+.picture_img{
+  text-align: center;
+}
+
+.picture_img img{
+  width: 50%;
+}
+
+.fuield{
+  background-color: #fff;
+  padding: 2rem;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.favorite_fuield{
+  padding: 2rem;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.profile{
+  background-color: #fff;
+  padding: 1rem;
+  margin-bottom: 2rem;
 }
