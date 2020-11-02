@@ -18,7 +18,6 @@
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-left">
-              <li><%= image_tag 'search.svg', width:'20px', height:'20px', alt: '検索' %></li>
               <li>
                 <%= form_tag('/pictures', method: 'get') do %>
                 <%= text_field_tag(:title_key) %>
