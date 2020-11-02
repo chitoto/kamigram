@@ -28,7 +28,7 @@ class PicturesController < ApplicationController
     else
       if @picture.save
         PicturesMailer.picture_mail(@picture).deliver
-        redirect_to pictures_path, notice: "作成しました！"
+        redirect_to new_picture_path, notice: "作成しました！"
       else
         flash.now[:notice] = '作成に失敗しました'
         render :new
