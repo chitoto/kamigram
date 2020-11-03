@@ -70,7 +70,7 @@ class PicturesController < ApplicationController
   end
 
   def current_user?
-    if @picture.user_id |= current_user.id
+    unless @picture.user_id == current_user.id
       redirect_to picture_path, notice:"編集できません！"
     end
   end
