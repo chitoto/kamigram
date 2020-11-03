@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
-
+  before_action :current_user?, only: [ :edit, :update, :destroy]
   def index
     if params[:title_key]
       @pictures = Picture.where('title LIKE ?', "%#{params[:title_key]}%")
@@ -67,5 +67,11 @@ class PicturesController < ApplicationController
 
   def set_picture
     @picture = Picture.find(params[:id])
+  end
+
+  def current_user?
+    if @picture.user_id |= current_user.id
+      redirect_to picture_path, notice:"編集できません！"
+    end
   end
 end
